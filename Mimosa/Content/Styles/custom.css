@@ -1,0 +1,112 @@
+﻿body {
+    font-family: 'Open Sans',sans-serif !important;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #f00;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border-color: #f00 !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #f00 !important;
+    outline: 0 none;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+.main-menu-links li a:hover
+{
+    background: url("../images/menu_active.png") repeat-x scroll left top rgba(0, 0, 0, 0) !important;
+    color: #3E3E3E;
+}
+
+.popup
+{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 7px;
+    width: 500px;
+    position: relative;
+    padding: 5px;
+    display: none
+}
+
+.popup-close
+{
+    right: 0;
+    top: 3px;
+    border: medium none;
+    margin-right: -13px;
+    margin-top: -13px;
+    position: absolute;
+    cursor: pointer
+}
+
+h3.title-popup
+{
+    background: none repeat scroll 0 0 #539F57;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    /*height: 40px;
+    line-height: 40px;*/
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.popup .row
+{
+    margin: 0px;
+}
+
+.popup .row-L
+{
+    float: left;
+    width: 150px;
+    color: black;
+}
+
+.row-L span
+{
+    display: block;
+    margin-right: 10px;
+    margin-top: 10px;
+    text-align: right;
+}
+
+.popup .row-R
+{
+    float: left;
+    width: 190px;
+}
+
+.clear
+{
+    clear: both;
+}
+
+.field-warper label {
+    cursor:default
+}
+
+/*facebook**/
+

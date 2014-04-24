@@ -1,0 +1,52 @@
+﻿@using Mimosa.Utility
+<header class="colored flat-menu">
+    <div class="header-top">
+        <div class="container">
+            <nav class="menu-topmenu-container" id="secondary-nav">
+                <ul class="nav nav-pills nav-top" id="menu-topmenu">
+                    <li>
+                        <a href="/"><i class="fa fa-home"></i>@Html.T("Menu.Home")</a>
+                    </li>
+                    <li><a href="@Url.Action("Index", "Room")"><i class="fa fa-briefcase"></i>@Html.T("Menu.RoomList")</a></li>
+                    <li><a href=""><i class="fa fa-gift"></i>@Html.T("Menu.Promotion")</a></li>
+                    <li><a href=""><i class="fa fa-envelope"></i>@Html.T("Menu.Contact")</a></li>
+                    <li><span><i class="fa fa-phone"></i>(08) 88-88-88</span></li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <ul class="social-icons">
+                    <li class="facebook">
+                        <a title="Facebook" target="_blank" href="">
+                            Facebook
+                        </a>
+                    </li>
+                    <li class="twitter">
+                        <a title="Twitter" target="_blank" href="">
+                            Twitter
+                        </a>
+                    </li>
+                    <li class="youtube">
+                        <a title="Youtube" target="_blank" href="">
+                            Youtube
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="content"  style=" float:right; padding: 10px;">
+                <ul class="menu clearfix">
+                    <li style="display:inline"><a href="javascript:;" onclick="changeLanguage(1)">EN</a> </li>
+                    <li style="display:inline">|</li>
+                    <li style="display:inline"><a href="javascript:;" onclick="changeLanguage(2)">VI</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<script type="text/javascript">
+    function changeLanguage(languageId)
+    {
+        $.post("@Url.Action("ChangeLanguage", "Home")", { languageId: languageId }, function (data) {
+        location.reload();
+        });
+    }
+</script>

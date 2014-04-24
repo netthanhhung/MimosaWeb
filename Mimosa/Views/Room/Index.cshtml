@@ -1,0 +1,44 @@
+﻿@using System.Configuration
+@using Mimosa.Utility
+@using MVCCore.Framework.Web.Mvc
+@{
+    ViewBag.Title = "Searching for your room - Mimosa";
+}
+
+<div class="clearfix" id="main">
+    <div class="column" id="content">
+        <div class="section">
+            <a id="main-content"></a>
+            <div class="tabs">
+            </div>
+            <div class="region region-content">
+               @Html.Partial("_Banner")
+                <div class="block block-views" id="block-views-exp-search-room-page">
+                    <div class="content">
+                        @Html.Partial("RoomSmartSearchAjax")
+                    </div>
+                </div>
+                <div id="ContentRoom">
+                    @{
+                        Html.RenderAction("SearchRoom", "Room", new { PageIndex = 1, PageSize = int.Parse(ConfigurationManager.AppSettings["PageSize"]) });
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.section, /#content -->
+</div>
+
+@section scripts
+{
+    @Html.Script("jquery.pager.js")
+    <script type="text/javascript">
+        function SearchResult() {
+            $('html, body').animate({
+                scrollTop: $("#views-exposed-form-search-room-page").offset().top
+            }, 500);
+
+            $.RemoveBigLoading();
+        }
+    </script>
+}

@@ -1,0 +1,30 @@
+﻿@using System.Configuration
+@using Mimosa.Utility
+@using MVCCore.Framework.Web.Mvc
+@{
+    ViewBag.Title = "Home - Mimosa";
+}
+<div class="clearfix" id="main">
+    <div class="column" id="content">
+        <div class="section">
+            <a id="main-content"></a>
+            <div class="tabs">
+            </div>
+            <div class="region region-content">
+                @Html.Partial("_Banner")
+                 <div class="block block-views" id="block-views-exp-search-room-page">
+                    <div class="content">
+                       @Html.Partial("RoomSmartSearch")
+                    </div>
+                </div>
+                <div class="block block-block" id="block-block-8">
+                    <div class="content">
+                        @Html.Raw(Html.T("HomePage.IntroContent"))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.section, /#content -->
+</div>
+

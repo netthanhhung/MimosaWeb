@@ -1,0 +1,76 @@
+﻿@using Mimosa.Utility
+@using (Html.BeginForm("Index", "Room", FormMethod.Post, new { id = "views-exposed-form-search-room-page" }))
+{
+    <input type="hidden" name="PageIndex" value="20" id="PageIndex" />
+    <input type="hidden" name="PageSize" value="20" id="PageSize" />
+
+    <h2 style="text-align: center; color: white; font-weight: bold; padding-top: 10px">@Html.T("Search.SmartSearch")</h2>
+    
+    <div class="views-exposed-form">
+        <div class="views-exposed-widgets clearfix">
+            <div class="views-exposed-widget">
+                <label for="edit-field-type-rooms-tid">
+                    @Html.T("RoomType")
+                </label>
+                <div class="views-widget">
+                    <div class="form-item form-type-select">
+                        <select name="RoomType" id="RoomType">
+                            @foreach (var item in (List<SelectListItem>)ViewBag.RoomTypeList)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="views-exposed-widget">
+                <label>
+                    @Html.T("Area")
+                </label>
+                <div class="views-widget">
+                    <div class="form-item form-type-select">
+                        <select class="form-select" name="Area" id="Area">
+                            <option value="">-- All --</option>
+                            <option value="@((int)Area.Less10MeterSquare)">&lt; 10 m2</option>
+                            <option value="@((int)Area.MeterSquar10And20)">10m2 - 20m2</option>
+                            <option value="@((int)Area.MeterSquar20And30)">20m2 - 30m2</option>
+                            <option value="@((int)Area.Than30MeterSquare)">&gt; 30 m2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="views-exposed-widget">
+                <label>
+                    @Html.T("PriceHire")
+                </label>
+                <div class="views-widget">
+                    <div class="form-item form-type-select">
+                        <select class="form-select" name="Money" id="Money">
+                            <option selected="selected" value="">-- All --</option>
+                            <option value="@((int)Money.Less3Million)">Dưới 3 triệu</option>
+                            <option value="@((int)Money.Million3And5)">Từ 3 - 5 triệu/ tháng</option>
+                            <option value="@((int)Money.Than5Million)">Trên 5 triệu/ tháng</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="views-exposed-widget">
+                <label>
+                    @Html.T("District")
+                </label>
+                <div class="views-widget">
+                    <div class="form-item form-type-select">
+                        <select class="form-select" name="District" id="District">
+                            @foreach (var item in (List<SelectListItem>)ViewBag.Districts)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <input class="btn btn-default" style="margin-top: 30px; height: 32px" type="submit" value="@Html.T("Search")" />
+        </div>
+    </div>
+    <br/>
+}

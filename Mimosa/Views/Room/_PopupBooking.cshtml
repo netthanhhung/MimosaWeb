@@ -1,0 +1,171 @@
+﻿@using Mimosa.Utility
+@using MVCCore.Framework.Web.Mvc
+@model Mimosa.Models.CustomerBookingRoomModel
+@using (Ajax.BeginForm("BookRoom", "Room", null, new AjaxOptions { OnComplete = "BookRoomResult" }, new { id = "BookRoomForm" }))
+{
+    @Html.HiddenFor(x => x.RoomId)
+    <div class="popup" id="content-popup-book-room">
+        <div class="welcome-top">
+            <a style="border: none; position: absolute; margin-top: -13px; margin-right: -13px;"
+                class="popup-close">
+                @Html.Image("close_popupbox.png")
+            </a>
+        </div>
+        <div style="clear: both;">
+        </div>
+        <h3 class="title-popup">@Html.T("TitleBookRoom") @Model.RoomName</h3>
+        <fieldset>
+            <legend>@Html.T("InfoBook"):</legend>
+            <div style="margin-top: 25px">
+                <div class="row">
+                    <div class="row-L">
+                        <span>@Html.T("FirstName")</span></div>
+                    <div class="row-R">
+                        @Html.TextBoxFor(x => x.FirstName, new { @class = "inputbox" })
+                    </div>
+                    <br class="clear" />
+                </div>
+                <div class="row">
+                    <div class="row-L">
+                        <span>@Html.T("LastName")</span></div>
+                    <div class="row-R">
+                        @Html.TextBoxFor(x => x.LastName, new { @class = "inputbox" })
+                    </div>
+                    <br class="clear" />
+                </div>
+                <div class="row">
+                    <div class="row-L">
+                        <span>@Html.T("Age")</span></div>
+                    <div class="row-R">
+                        @Html.TextBoxFor(x => x.Age, new { @class = "inputbox" })
+                    </div>
+                    <br class="clear" />
+                </div>
+                <div class="row">
+                    <div class="row-L">
+                        <span>@Html.T("Gender")</span></div>
+                    <div class="row-R">
+                        <select name="" id="">
+                            <option>-- @Html.T("Gender") --</option>
+                            <option value="0">@Html.T("Man")</option>
+                            <option value="1">@Html.T("Woman")</option>
+                        </select>
+                    </div>
+                    <br class="clear" />
+                </div>
+                <div class="row">
+                    <div class="row-L">
+                        <span>@Html.T("Booking.StartDate")</span></div>
+                    <div class="row-R">
+                        <input type="text" data-val-required="" data-val="true" id="StartDate" value="@(DateTime.Now.ToString("dd-MM-yyyy"))" name="StartDate"/>
+                    </div>
+                    <br class="clear" />
+                </div>
+                <div class="row">
+                    <div class="row-L">
+                        <span>@Html.T("Booking.EndDate")</span></div>
+                    <div class="row-R">
+                        <input type="text" data-val-required="" data-val="true" id="EndDate" value="@(DateTime.Now.AddMonths(1).ToString("dd-MM-yyyy"))" name="EndDate"/>
+                    </div>
+                    <br class="clear" />
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>@Html.T("InfoContact"):</legend>
+            <div style="margin-top: 25px">
+                <div class="row">
+                    <div class="row-L">
+                        <span>@Html.T("FirstName")</span></div>
+                    <div class="row-R">
+                        @Html.TextBoxFor(x => x.FirstNameContact, new { @class = "inputbox" })
+                    </div>
+                    <br class="clear" />
+                </div>
+                <div class="row">
+                    <div class="row-L">
+                        <span>@Html.T("LastName")</span></div>
+                    <div class="row-R">
+                        @Html.TextBoxFor(x => x.LastNameContact, new { @class = "inputbox" })
+                    </div>
+                    <br class="clear" />
+                </div>
+                <div class="row">
+                    <div class="row-L">
+                        <span>@Html.T("City")</span></div>
+                    <div class="row-R">
+                        @Html.TextBoxFor(x => x.CityContact, new { @class = "inputbox" })
+                    </div>
+                    <br class="clear" />
+                </div>
+                <div class="row">
+                    <div class="row-L">
+                        <span>@Html.T("Address")</span></div>
+                    <div class="row-R">
+                        @Html.TextBoxFor(x => x.AddressContact, new { @class = "inputbox" })
+                    </div>
+                    <br class="clear" />
+                </div>
+                <div class="row">
+                    <div class="row-L">
+                        <span>@Html.T("Phone")</span></div>
+                    <div class="row-R">
+                        @Html.TextBoxFor(x => x.PhoneContact, new { @class = "inputbox" })
+                    </div>
+                    <br class="clear" />
+                </div>
+                <div class="row">
+                    <div class="row-L">
+                        <span>@Html.T("Email")</span></div>
+                    <div class="row-R">
+                        @Html.TextBoxFor(x => x.EmailContact, new { @class = "inputbox" })
+                    </div>
+                    <br class="clear" />
+                </div>
+                <div class="row">
+                    <div class="row-L">
+                        <span>@Html.T("Fax")</span></div>
+                    <div class="row-R">
+                        @Html.TextBoxFor(x => x.FaxNumberContact, new { @class = "inputbox" })
+                    </div>
+                    <br class="clear" />
+                </div>
+            </div>
+        </fieldset>
+        <div class="row">
+            <div class="row-L">
+                &nbsp;</div>
+            <div class="row-R">
+                <input type="submit" class="btn btn-large btn-danger" value="@Html.T("Register")" />
+            </div>
+            <br class="clear" />
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $(function() {
+        $("#StartDate, #EndDate").datepicker({
+            dateFormat: "dd-mm-yy",
+            changeMonth: true,
+            changeYear: true
+        });
+
+        $("input[name='contractDuration']").change(function() {
+            if ($(this).val() == "1"){
+                $("#EndDate").val("@(DateTime.Now.AddMonths(1).ToString("dd-MM-yyyy"))");   
+            }
+            else if ($(this).val() == "3"){
+                $("#EndDate").val("@(DateTime.Now.AddMonths(3).ToString("dd-MM-yyyy"))");
+            }
+            else if ($(this).val() == "6"){
+                $("#EndDate").val("@(DateTime.Now.AddMonths(6).ToString("dd-MM-yyyy"))");
+            }
+        });
+
+    });
+
+    function BookRoomResult() {
+        alert("@(Html.T("RegisterSuccess"))");
+        location.reload();
+    }
+</script>

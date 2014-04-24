@@ -1,0 +1,52 @@
+﻿@using System.Web.Mvc
+@using Mimosa.Models.Search
+
+@helper RenderPagerScript(SearchResult searchResult, string pagerSelector, string formSelector, string hiddenSelector = "#PageIndex")
+{
+    @MvcHtmlString.Create("<script type=\"text/javascript\">")
+    <text>
+    $().ready(function() {                 
+            $('@pagerSelector').pager({
+                pagenumber: @(searchResult.Filter.PageIndex),
+                pagecount: @(searchResult.TotalPages),
+                buttonClickCallback: function(pageIndex) {
+                    $('@(hiddenSelector)').val(pageIndex);                  
+                    @if (string.IsNullOrWhiteSpace(formSelector))
+                    {
+                        <text>$(this).parents('form').submit();</text>
+                    }
+                    else
+                    {
+                        <text>$('@formSelector').submit();</text>
+                    }
+    }
+            }); 
+        });        
+    </text>
+    @MvcHtmlString.Create("</script>")
+}
+
+@helper RenderPagerScript(SearchResult2 searchResult, string pagerSelector, string formSelector, string hiddenSelector = "#PageIndex")
+{
+    @MvcHtmlString.Create("<script type=\"text/javascript\">")
+    <text>
+    $().ready(function() {                 
+            $('@pagerSelector').pager({
+                pagenumber: @(searchResult.Filter.PageIndex),
+                pagecount: @(searchResult.TotalPages),
+                buttonClickCallback: function(pageIndex) {
+                    $('@(hiddenSelector)').val(pageIndex);                  
+                    @if (string.IsNullOrWhiteSpace(formSelector))
+                    {
+                        <text>$(this).parents('form').submit();</text>
+                    }
+                    else
+                    {
+                        <text>$('@formSelector').submit();</text>
+                    }
+    }
+            }); 
+        });        
+    </text>
+    @MvcHtmlString.Create("</script>")
+}

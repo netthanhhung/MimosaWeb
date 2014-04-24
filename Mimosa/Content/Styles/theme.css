@@ -1,0 +1,100 @@
+
+/* TOP MENU*/
+header.colored {
+    border-top: 0 none;
+}
+header {
+    background: linear-gradient(to bottom, #F6F6F6 0%, #FFFFFF 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-top: 5px solid #3F68A8;
+    clear: both;
+}
+header.colored div.header-top {
+    background-color: #3F68A8;
+}
+header.flat-menu div.header-top {
+    margin-top: -8px;
+}
+header div.header-top {
+    min-height: 50px;
+}
+header div.header-top nav {
+    float: left;
+    width: auto;
+}
+header div.header-top ul.nav-top {
+    min-height: 5px;
+}
+header nav ul.nav-top {
+    margin: 10px 0 -10px;
+    min-height: 62px;
+}
+.nav {
+    list-style: none outside none;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+header nav ul.nav-top li i {
+    margin-right: 6px;
+    position: relative;
+    top: 1px;
+}
+header div.header-top i {
+    margin-left: 6px;
+    margin-right: 6px;
+    position: relative;
+    top: 1px;
+}
+
+header.colored div.header-top p, header.colored div.header-top a, header.colored div.header-top span {
+    color: #FFFFFF;
+}
+header nav ul.nav-top li a, header nav ul.nav-top li span {
+    color: #999999;
+    font-size: 0.9em;
+}
+
+header nav ul.nav-top li a {
+    font-family: "Open Sans",Arial,sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    margin-left: 3px;
+    margin-right: 3px;
+    text-transform: uppercase;
+}
+    
+
+header nav ul.nav-top li a:hover {
+    background-color: #0099E7;
+}
+
+ul.social-icons li a {
+    display: block;
+    height: 30px;
+    text-align: center;
+    width: 30px;
+}
+header.flat-menu div.social-icons {
+    margin: 10px 10px 0;
+}
+header.flat-menu div.social-icons, header.clean-top div.social-icons {
+    margin: 11px 10px 9px;
+}
+header div.social-icons {
+    clear: right;
+    float: right;
+    margin-left: 5px;
+    margin-top: -3px;
+    position: relative;
+}
+header nav ul.nav-top li span {
+    display: block;
+    line-height: 14px;
+    margin-bottom: 2px;
+    margin-right: 0;
+    margin-top: 5px;
+    padding: 8px 2px 8px 12px;
+}
+/****END TOP MENU****/

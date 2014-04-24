@@ -1,0 +1,59 @@
+﻿@using MVCCore.Framework.Web.Mvc
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Html.Script("jquery-1.7.1.min.js")
+    @Html.Script("jquery-ui-1.8.20.min.js")
+    @Html.Script("jquery.unobtrusive-ajax.min.js")
+    @Html.Script("jquery.validate.min.js")
+    @Html.Script("jquery.validate.unobtrusive.min.js")
+    @Html.Script("app.js")
+    @Html.Script("custom.js")
+    @Html.Css("font-awesome.css")
+    @Html.Css("base/jquery.ui.all.css")
+    @Html.Css("system.base.css")
+    @Html.Css("system.menus.css")
+    @Html.Css("system.messages.css")
+    @Html.Css("system.theme.css")
+    @Html.Css("jquery.ui.core.css")
+    @Html.Css("jquery.ui.theme.css")
+    @Html.Css("jquery.ui.button.css")
+    @Html.Css("comment.css")
+    @Html.Css("counter.css")
+    @Html.Css("field.css")
+    @Html.Css("node.css")
+    @Html.Css("search.css")
+    @Html.Css("user.css")
+    @Html.Css("views_sexy_throbber.css")
+    @Html.Css("views.css")
+    @Html.Css("layout.css")
+    @Html.Css("bootstrap.css")
+    @Html.Css("colors.css")
+    @Html.Css("style.css")
+    @Html.Css("main.css")
+    @Html.Css("paging.css")
+    @Html.Css("custom.css")
+    @Html.Css("theme-elements.css")
+    @Html.Css("theme.css")
+    @Html.Css("google-font.css")
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-40 node-type-room footer-columns">
+    <div id="page-wrapper">
+        @Html.Partial("_Header")
+        <div id="page">
+            <div id="main-wrapper" class="clearfix">
+                @RenderBody()
+            </div>
+            <div id="footer-wrapper">
+                @{
+                    Html.RenderAction("GetFooter", "Home");
+                }
+            </div>
+        </div>
+    </div>
+    @RenderSection("scripts", false)
+</body>
+</html>

@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{72FE83F0-4E51-40B3-86B7-46071746D056}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Entities</RootNamespace>
+    <AssemblyName>Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="aspnet_Applications.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Membership.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Roles.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_SchemaVersions.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Users.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Booking.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookingRoomEquipment.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookingRoomService.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookingStatus.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Component.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactInformation.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactType.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="District.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Enum\Enum.cs" />
+    <Compile Include="Equipment.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Image.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImageType.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Language.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocaleStringResource.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MimosaEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MimosaEntities.Designer.cs">
+      <DependentUpon>MimosaEntities.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Organisation.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleComponentPermission.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Room.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoomEquipment.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoomService.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoomStatus.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoomType.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Site.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SiteGroup.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SiteGroupSite.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs" />
+    <Compile Include="TagVersion.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRoleAuth.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UtilityDay.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisitorOfDay.cs">
+      <DependentUpon>MimosaEntities.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="MimosaEntities.edmx.diagram" />
+    <None Include="MimosaEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MimosaEntities.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="MimosaEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MimosaEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

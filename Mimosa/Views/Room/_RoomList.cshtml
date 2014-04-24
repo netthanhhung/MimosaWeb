@@ -1,0 +1,94 @@
+﻿@using Entities
+@using Mimosa.Utility
+@using MVCCore.Framework
+@using MVCCore.Framework.Web.Mvc
+@model Mimosa.Models.Search.SearchResult<Room>
+@{
+    var listImage = (List<Image>)ViewBag.ListImage;
+}
+<div class="block" id="block-block-9">
+    <div class="content">
+        <div class="ajax-header">
+            @Html.Raw(string.Format(Html.T("RoomSearchResult").ToHtmlString(), Model.List.Count, Model.TotalRecords))
+        </div>
+    </div>
+</div>
+<div class="block " id="block-system-main">
+    <div class="content">
+        <div class="view view-id-search_room view-display-id-page">
+            <div class="view-content">
+                @foreach (var room in Model.List)
+                {
+                    <div class="views-row">
+                        <div class="views-field views-field-nothing">
+                            <span class="field-content">@Html.T("Room.RoomForRent")</span>
+                        </div>
+                        <div class="views-field views-field-title">
+                            <span class="field-content"><a href="@Url.RouteUrl("RoomDetails", new { nameDetail = TextUtility.MakeAlias(room.RoomName), roomId = room.RoomId, title = UrlHepler.GetTitleDetail() })">@room.RoomName</a>
+                            </span>
+                        </div>
+                        <div class="views-field views-field-field-price">
+                            <div class="field-content">
+                                @room.BasePrice.ToCurrencyString(showUnit: false) VND
+                            </div>
+                        </div>
+                        <div class="views-field views-field-field-rental-duration">
+                            <div class="field-content">
+                                <div class="available">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="views-field views-field-field-images">
+                            <div class="field-content">
+                                @{
+                                    var image = listImage.FirstOrDefault(x => x.ItemId == room.RoomId);
+                                    if (image != null)
+                                    {
+                                        var base64 = Convert.ToBase64String(image.ImageContent);
+                                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                                    <a href="@Url.RouteUrl("RoomDetails", new { nameDetail = TextUtility.MakeAlias(room.RoomName), roomId = room.RoomId, title = UrlHepler.GetTitleDetail() })">
+                                                        <img width="420" height="420" alt="" src="@imgSrc" typeof="foaf:Image"></a>
+                                    }
+                                    else
+                                    {
+                                                    <a href="@Url.RouteUrl("RoomDetails", new { nameDetail = TextUtility.MakeAlias(room.RoomName), roomId = room.RoomId, title = UrlHepler.GetTitleDetail() })">
+                                                        @Html.Image("no-images.jpg", new { style = "width:228px; height:246px" })</a>
+                                    }
+                                }
+                                <div class="description">
+                                    @Html.T("Room.Status") <strong>@Html.T("Room.Status." + @room.RoomStatus.Name)</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="views-field views-field-field-house-city">
+                            <div class="field-content">@room.Description</div>
+                        </div>
+                        <div class="views-field views-field-field-area">
+                            <div class="field-content">
+                                @((room.MeterSquare ?? 0).ToString("0.00"))
+                                m<sup>2</sup>
+                            </div>
+                        </div>
+                        <div class="views-field views-field-field-contacted">
+                            <div class="field-content">
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div>
+                <div class="content-pager" id="pager">
+                </div>
+                <br class="clear" />
+            </div>
+        </div>
+    </div>
+</div>
+@RazorHelpers.RenderPagerScript(Model, "#pager", "#views-exposed-form-search-room-page")
+<script type="text/javascript">
+    $(function () {
+        $('.views-field-field-images').hover(function () {
+            return $(this).find('.description').toggleClass('display');
+        });
+    })
+</script>

@@ -1,0 +1,45 @@
+﻿@using MVCCore.Framework.Web.Mvc
+@using Mimosa.Utility
+<div class="block block-block" id="block-block-10">
+    <div class="content">
+        <div class="poster-warpper">
+            @*<div class="option-city">
+                <select>
+                    <option value="1" selected="selected">Hồ Chí Minh</option>
+                </select>
+            </div>*@
+            <!--option-city-->
+            <div class="content-poster-warpper">
+                <div class="images-avata">
+                    @Html.Image("s.png")
+                </div>
+                <!--end images-avata-->
+                <div class="poster-right">
+                    <h2 class="page-title">@Html.T("Banner.WelcomeToH1")</h2>
+                    <h1 class="page-title">@Html.T("Banner.WelcomeToH2")</h1>
+
+                    <div class="poster-row">
+                        <div class="poster-row-left">
+                            <div class="go-search">@Html.T("Banner.HowToFindSuitableRoom")</div>
+                            <div class="yeu-cau-support">@Html.T("Banner.NeedAnAdvice")</div>
+                            <div class="hotline-city">
+                                @Html.T("Banner.Call"): <span>088.888.8888</span><br>
+                                Hotline: <span>0976.870.781</span>
+                            </div>
+                            <!--end hotline-->
+                        </div>
+                        <!--end poster-row-left-->
+                        <div class="slideshow-poster">
+                            @Html.Image(Html.T("Banner.PromotionImage").ToHtmlString())
+                        </div>
+                        <!--end slideshow-poster-->
+                    </div>
+                    <!--end poster-row-->
+                </div>
+                <!--end pooster-right-->
+            </div>
+            <!--end content-poster-warpper-->
+        </div>
+        <!--end test-->
+    </div>
+</div>

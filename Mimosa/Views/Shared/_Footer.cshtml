@@ -1,0 +1,50 @@
+@using Mimosa.Utility
+@using MVCCore.Framework
+@model Tuple<int?, int?, int?>
+
+<div class="section">
+    <div id="footer-columns" class="clearfix">
+        <div class="region region-footer-firstcolumn">
+            <div id="block-counter-counter" class="block block-counter">
+                <h2>
+                    Counter</h2>
+                <div class="content">
+                    <div id="counter">
+                        <ul>
+                            <li><strong>@Model.Item1.ToCurrencyString(showUnit: false)</strong> @Html.T("TotalVisited")</li>
+                            <li><strong>@Model.Item2.ToCurrencyString(showUnit: false)</strong> @Html.T("VisitedThisWeek")</li>
+                            <li><strong>@Model.Item3.ToCurrencyString(showUnit: false)</strong> @Html.T("VisitedThisMonth")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="region region-footer-secondcolumn">
+            <div id="block-system-main-menu" class="block block-system block-menu-footer block-menu">
+                <h2>Menu</h2>
+                <div class="content">
+
+                    <ul class="menu clearfix" >
+                        <li class="first leaf"><a href="/" title=""><i class="fa fa-home"></i>&nbsp;@Html.T("Menu.Home")</a></li>
+                        <li class="leaf"><a href="/" title=""><i class="fa fa-briefcase"></i>&nbsp;@Html.T("Menu.RoomSystem")</a></li>
+                        <li class="leaf"><a href="/" title=""><i class="fa fa-gift"></i>&nbsp;@Html.T("Menu.Promotion")</a></li>
+                        <li class="leaf"><a href="/" title=""><i class="fa fa-comment"></i>&nbsp;@Html.T("Menu.AboutUs")</a></li>
+                        <li class="leaf"><a href=""><i class="fa fa-envelope"></i>&nbsp;@Html.T("Menu.Contact")</a></li>
+
+                   </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="clearfix">
+        <div class="region region-footer">
+            <div id="block-block-1" class="block block-block block-copyright">
+                <h2>Copyright</h2>
+                <div class="content">
+                    <p>© 2014&nbsp;<a href="">MIMOSA GROUP</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#footer -->
+</div>

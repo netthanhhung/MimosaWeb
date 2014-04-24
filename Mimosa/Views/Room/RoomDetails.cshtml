@@ -1,0 +1,330 @@
+﻿@using System.Configuration
+@using Entities
+@using Mimosa.Utility
+@using MVCCore.Framework
+@using MVCCore.Framework.Web.Mvc
+@model Room
+@{
+    ViewBag.Title = Html.T("RoomDetails") + " " + Model.RoomName;
+    var listImage = (List<Image>)ViewBag.ListImage;
+}
+<div class="clearfix" id="main">
+    <div id="content">
+        <div class="section">
+            <a id="main-content"></a>
+            <div class="tabs">
+            </div>
+            @Html.Partial("_Banner")
+            <div class="content">
+                @Html.Partial("RoomSmartSearch")
+            </div>
+            <div class="region region-content">
+                <div class="block block-system" id="block-system-main">
+                    <div class="content">
+                        <div class="node node-room  node-full clearfix" id="node-40">
+                            <div class="content-image">
+                                <div class="slideshow-image slideshow-image-room">
+                                    <h2 class="title">@Model.RoomName</h2>
+                                    @{
+                                        var listImageRoom = listImage.Where(x => x.ImageTypeId == 3).ToList();
+                                    }
+                                    <div>
+                                        <div style="position: relative;" id="slideshow">
+                                            @foreach (var image in listImageRoom)
+                                            {
+                                                var base64 = Convert.ToBase64String(image.ImageContent);
+                                                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                                <a class="colorbox" href="javascript:void(0)">
+                                                    <img style="width: 420px; height: 420px" alt="@image.FileName" title="@image.FileName" src="@imgSrc" />
+                                                </a>
+                                            }
+                                        </div>
+                                        <div class="content_6">
+                                            <ul id="nav">
+                                                @foreach (var image in listImageRoom)
+                                                {
+                                                    var base64 = Convert.ToBase64String(image.ImageSmallContent);
+                                                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                                    <li><a href="javascript:void(0)">
+                                                        <img alt="" width="45" height="45" title="" src="@imgSrc">
+                                                    </a></li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end slideshow-image-room-->
+                                <div class="node-info info-room">
+                                    <div class="node-info-content">
+                                        <h3 class="title-block">@Html.T("RoomDetails")&nbsp;@Model.RoomName</h3>
+                                        <div class="field-warper">
+                                            <label>@Html.T("RoomName")</label>
+                                            <div class="field-content">@Model.RoomName</div>
+                                        </div>
+                                        <div class="field-warper">
+                                            <label>@Html.T("Area")</label>
+                                            <div class="field-content">
+                                                @((Model.MeterSquare ?? 0).ToString("0.00"))
+                                                m<sup>2</sup>
+                                            </div>
+                                        </div>
+                                        <div class="field-warper">
+                                            <label>@Html.T("Floor")</label>
+                                            <div class="field-content">@Model.Floor</div>
+                                        </div>
+                                        <div class="field-warper">
+                                            <label>@Html.T("RoomStatus")</label>
+                                            <div class="field-content">
+                                                @Model.RoomStatus.Name
+                                            </div>
+                                        </div>
+                                        <div class="field-warper">
+                                            <label>@Html.T("Address")</label>
+                                            @if (Model.Site.ContactInformation != null)
+                                            {
+                                                <div class="field-content">
+                                                    @Model.Site.ContactInformation.Address &nbsp; @Model.Site.ContactInformation.District
+                                                    &nbsp; @Model.Site.ContactInformation.City
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end slideshow-image-house-->
+                            </div>
+                            @if (Model.RoomEquipments.Any())
+                            {
+                                <div class="info-tien-nghi">
+                                    <h3 class="block-title">@Html.T("TitleChooseEquipment")</h3>
+                                    <div class="content-info-tien-nghi">
+                                        <span class="discription">
+                                            @Html.Raw(Html.T("Room.EquipmentSelectDescription"))
+                                        </span>
+                                        <div class="view view-tien-nghi-room view-id-tien_nghi_room view-display-id-block view-dom-id-411290e2256e5e676c18b4297fb4fd1f">
+                                            <div class="view-content">
+                                                @{
+                                var equipmentImageList = listImage.Where(x => x.ImageTypeId == 4).ToList();
+                                                }
+                                                @foreach (var equipment in Model.RoomEquipments)
+                                                {
+                                                    var equipmentImage = equipmentImageList.FirstOrDefault(x => x.ItemId == equipment.EquipmentId);
+                                                    <div class="views-row">
+                                                        <div class="row-warpper select" idtable="@equipment.EquipmentId" tablename="equipment" price="@(equipment.Price ?? 0)">
+                                                            <div class="views-field views-field-field-image">
+                                                                <div class="field-content">
+                                                                    @if (equipmentImage != null)
+                                                                    {
+                                                                        var base64 = Convert.ToBase64String(equipmentImage.ImageContent);
+                                                                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                                                        <img width="60" height="47" alt="" src="@imgSrc" typeof="foaf:Image" />
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @Html.Image("no-images.jpg", new { style = "width:60px; height:47px" })
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                            <div class="views-field views-field-title">
+                                                                <span class="field-content">@equipment.Equipment.EquipmentName</span>
+                                                            </div>
+                                                            <div class="views-field views-field-body">
+                                                                <div class="field-content">
+                                                                    @equipment.Equipment.Description
+                                                                </div>
+                                                            </div>
+                                                            <div class="views-field views-field-field-price">
+                                                                <div class="field-content">
+                                                                    <span price="@(equipment.Price ?? 0)" class="price-equipment">
+                                                                        @((equipment.Price ?? 0).ToCurrencyString(showUnit: false))
+                                                                        @Html.T("CurrencyPerMonth")
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end content-info-tien-nghi-->
+                                </div>
+                            }
+                            <!--end info-tien-nghi-->
+                            @if (Model.RoomServices.Any())
+                            {
+                                <div class="info-tien-nghi">
+                                    <h3 class="block-title">@Html.T("TitleChooseService")</h3>
+                                    <div class="content-info-tien-nghi">
+                                        <span class="discription">
+                                            @Html.Raw(Html.T("Room.ServiceSelectDescription"))
+                                        </span>
+                                        <div class="view view-tien-nghi-room view-id-tien_nghi_room view-display-id-block view-dom-id-411290e2256e5e676c18b4297fb4fd1f">
+                                            <div class="view-content">
+                                                @{
+                                var serviceImageList = listImage.Where(x => x.ImageTypeId == 5).ToList();
+                                                }
+                                                @foreach (var service in Model.RoomServices)
+                                                {
+                                                    var serviceImage = serviceImageList.FirstOrDefault(x => x.ItemId == service.RoomServiceId);
+                                                    <div class="views-row">
+                                                        <div class="row-warpper select" idtable="@service.ServiceId" tablename="service" price="@(service.Price ?? 0)">
+                                                            <div class="views-field views-field-field-image">
+                                                                <div class="field-content">
+                                                                    @if (serviceImage != null)
+                                                                    {
+                                                                        var base64 = Convert.ToBase64String(serviceImage.ImageContent);
+                                                                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                                                        <img width="60" height="47" alt="" src="@imgSrc" typeof="foaf:Image" />
+                                                                        <img width="60" height="47" alt="" src="@serviceImage.ImageContent" typeof="foaf:Image" />
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @Html.Image("no-images.jpg", new { style = "width:60px; height:47px" })
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                            <div class="views-field views-field-title">
+                                                                <span class="field-content">@service.Service.Name</span>
+                                                            </div>
+                                                            <div class="views-field views-field-body">
+                                                                <div class="field-content">
+                                                                    @service.Service.Description
+                                                                </div>
+                                                            </div>
+                                                            <div class="views-field views-field-field-price">
+                                                                <div class="field-content">
+                                                                    <span price="@(service.Price ?? 0)" idtable="@service.ServiceId" class="price-service">
+                                                                        @(service.Price.ToCurrencyString(showUnit: false))
+                                                                        @Html.T("CurrencyPerMonth")
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end content-info-tien-nghi-->
+                                </div>
+                            }
+                            <div class="info-contact">
+                                <div class="left-contact">
+                                    <div class="left-contact-content">
+                                        <h3 class="title">@Html.T("PriceHireRoom")</h3>
+                                        <div price="@Model.BasePrice" price_global="@Model.BasePrice" class="price">
+                                            @Html.T("PriceHire"):
+                                            @Model.BasePrice.ToCurrencyString(showUnit: false) @Html.T("CurrencyPerMonth")
+                                        </div>
+                                        <div class="contact-form">
+                                            <h4>@Html.T("ChooseContactHire")</h4>
+                                            <div class="ui-buttonset" id="contract-duration">
+                                                <input type="radio" class="ui-helper-hidden-accessible" value="1" id="one-month"
+                                                    name="contractDuration">
+                                                <label role="button" aria-pressed="false" for="one-month" price-default="@Model.BasePrice" heso="1" class="month one-month ui-button ui-widget ui-state-default ui-button-text-only ui-corner-left ui-state-active">
+                                                    <span class="ui-button-text">1 @Html.T("Month")</span>
+                                                </label>
+                                                <input type="radio" class="ui-helper-hidden-accessible" value="3" id="three-month"
+                                                    name="contractDuration">
+                                                <label role="button" aria-pressed="false" for="three-month" price-default="@Model.BasePrice" heso="1" class="month three-month ui-button ui-widget ui-state-default ui-button-text-only">
+                                                    <span class="ui-button-text">3 @Html.T("Month")</span>
+                                                </label>
+                                                <input type="radio" class="ui-helper-hidden-accessible" value="6" id="six-month"
+                                                    name="contractDuration">
+                                                <label role="button" aria-pressed="true" for="six-month" price-default="@Model.BasePrice" heso="1" class="month six-month  ui-button ui-widget ui-state-default ui-button-text-only ui-corner-right">
+                                                    <span class="ui-button-text">6 @Html.T("Month")</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!--end contact-from-->
+                                        <div class="price-dat-coc">
+                                            @Html.Raw(Html.T("Room.DepositDescription"))
+                                        </div>
+                                        <!--end tiền đặt cọc-->
+                                        <div style="text-align: center; padding-bottom: 10px;">
+                                            <input type="button" class="btn btn-info" value="Đặt phòng" onclick="showPopup('#content-popup-book-room')" /></div>
+                                    </div>
+                                </div>
+                                <!--end left-contact-->
+                                <!--end right-contact-->
+                            </div>
+                            <!--end info-tien-nghi-->
+                            <div class="call-now">
+                                <div class="content-call-now">
+                                    <h3 class="title">
+                                        @Html.T("Room.Contact")
+                                    </h3>
+                                    <div class="call-content">
+                                        <div class="left-call">
+                                            <h2 class="title">
+                                                @Html.T("Contact.SaleStaff")
+                                            </h2>
+                                            <img src="~/Content/Images/1911853_10152290965001600_821418289_n.jpg" />
+                                            <h2 class="name">
+                                                Trần Thanh Hưng
+                                            </h2>
+                                        </div>
+                                        @Html.Raw(Html.T("Contact.CallCenter"))
+                                        <div class="right-call">
+                                            <h2 class="title">
+                                                @Html.T("Contact.Consultant")
+                                            </h2>
+                                            <img src="~/Content/Images/5249_115887419733_955409_n.jpg" />
+                                            <h2 class="name">
+                                                Mai Đình Nga
+                                            </h2>
+                                        </div>
+                                    </div>
+                                    <!--end call-content-->
+                                </div>
+                                <!--end content-call-now-->
+                            </div>
+                            <!--end call-now-->
+                            <div class="slideshow-salesoff">
+                                <div class="view view-poster-sales-off view-id-poster_sales_off view-display-id-block_1 view-dom-id-33013d845e5e4feaf8119f5946737ac0">
+                                    <div class="view-content">
+                                        Promotion
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block block-phongdep" id="block-phongdep-facebook-like-comments">
+                    <div class="content">
+                        <div class="box facebook-comment" id="facebook-comment">
+                            <h2>
+                                @Html.T("FaceBook.Share")
+                            </h2>
+                            <div class="fb-like" data-href="@ConfigurationManager.AppSettings["UrlRootFO"]/@Url.RouteUrl("RoomDetails", new { nameDetail = TextUtility.MakeAlias(Model.RoomName), roomId = Model.RoomId, title = UrlHepler.GetTitleDetail() })" data-layout="standard" data-action="like" data-show-faces="true" data-share="false">
+                            </div>
+                            <div class="fb-comments" data-href="@ConfigurationManager.AppSettings["UrlRootFO"]/@Url.RouteUrl("RoomDetails", new { nameDetail = TextUtility.MakeAlias(Model.RoomName), roomId = Model.RoomId, title = UrlHepler.GetTitleDetail() })" data-numposts="5" data-colorscheme="light" data-width="940">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.section, /#content -->
+</div>
+@{
+    Html.RenderPartial("_PopupBooking", new Mimosa.Models.CustomerBookingRoomModel { RoomId = Model.RoomId, RoomName = Model.RoomName });
+}
+@section scripts
+{
+    @*@Html.Script("drupal.js")*@
+    @Html.Script("jquery.cycle.all.js")
+    @Html.Script("custom.js")
+    @Html.Script("accounting.min.js")
+    @Html.Script("popup.js")
+    @Html.Script("roomdetails.js")
+    <script type="text/javascript">
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        } (document, 'script', 'facebook-jssdk'));</script>
+}
