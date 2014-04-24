@@ -8,6 +8,21 @@
     ViewBag.Title = Html.T("RoomDetails") + " " + Model.RoomName;
     var listImage = (List<Image>)ViewBag.ListImage;
 }
+<style type="text/css">
+    div #slideshow
+    {
+        width: 420px;
+        height: 420px;
+        line-height: 420px;
+        text-align: center;
+    }
+    div #slideshow img
+    {
+        max-width: 420px;
+        max-height: 420px;
+        vertical-align: middle;
+    }
+</style>
 <div class="clearfix" id="main">
     <div id="content">
         <div class="section">
@@ -29,13 +44,13 @@
                                         var listImageRoom = listImage.Where(x => x.ImageTypeId == 3).ToList();
                                     }
                                     <div>
-                                        <div style="position: relative;" id="slideshow">
+                                        <div style="position: relative; align-content:center" id="slideshow">
                                             @foreach (var image in listImageRoom)
                                             {
                                                 var base64 = Convert.ToBase64String(image.ImageContent);
                                                 var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
                                                 <a class="colorbox" href="javascript:void(0)">
-                                                    <img style="width: 420px; height: 420px" alt="@image.FileName" title="@image.FileName" src="@imgSrc" />
+                                                    <img alt="@image.FileName" title="@image.FileName" src="@imgSrc" />
                                                 </a>
                                             }
                                         </div>
