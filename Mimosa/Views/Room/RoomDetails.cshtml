@@ -150,7 +150,7 @@
                                                             <div class="views-field views-field-field-price">
                                                                 <div class="field-content">
                                                                     <span price="@(equipment.Price ?? 0)" class="price-equipment">
-                                                                        @((equipment.Price ?? 0).ToCurrencyString(showUnit: false))
+                                                                        @((equipment.Price ?? 0).ToCurrencyString(showUnit: true))
                                                                         @Html.T("CurrencyPerMonth")
                                                                     </span>
                                                                 </div>
@@ -209,7 +209,7 @@
                                                             <div class="views-field views-field-field-price">
                                                                 <div class="field-content">
                                                                     <span price="@(service.Price ?? 0)" idtable="@service.ServiceId" class="price-service">
-                                                                        @(service.Price.ToCurrencyString(showUnit: false))
+                                                                        @(service.Price.ToCurrencyString(showUnit: true))
                                                                         @Html.T("CurrencyPerMonth")
                                                                     </span>
                                                                 </div>
@@ -229,7 +229,7 @@
                                         <h3 class="title">@Html.T("PriceHireRoom")</h3>
                                         <div price="@Model.BasePrice" price_global="@Model.BasePrice" class="price">
                                             @Html.T("PriceHire"):
-                                            @Model.BasePrice.ToCurrencyString(showUnit: false) @Html.T("CurrencyPerMonth")
+                                            @Model.BasePrice.ToCurrencyString(showUnit: true) @Html.T("CurrencyPerMonth")
                                         </div>
                                         <div class="contact-form">
                                             <h4>@Html.T("ChooseContactHire")</h4>
