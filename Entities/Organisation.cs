@@ -20,6 +20,7 @@ namespace Entities
             this.RoomTypes = new HashSet<RoomType>();
             this.Services = new HashSet<Service>();
             this.Sites = new HashSet<Site>();
+            this.Customers = new HashSet<Customer>();
         }
     
         public int OrganisationID { get; set; }
@@ -39,5 +40,6 @@ namespace Entities
         public virtual ICollection<RoomType> RoomTypes { get; set; }
         public virtual ICollection<Service> Services { get; set; }
         public virtual ICollection<Site> Sites { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
     }
 }

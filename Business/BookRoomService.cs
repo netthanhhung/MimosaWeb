@@ -14,7 +14,7 @@ namespace Business
             {
                 decimal totalPrice = 0;
                 var room = context.Rooms.FirstOrDefault(x => x.RoomId == roomId);
-
+                
                 if (contact != null)
                 {
                     context.ContactInformations.Add(contact);
@@ -87,7 +87,7 @@ namespace Business
                     {
                         customer.ContactInformationId = contact.ContactInformationId;
                     }
-
+                    customer.OrganisationID = room.Site.OrganisationID;
                     bookRoom.TotalPrice = totalPrice;
                     customer.Bookings.Add(bookRoom);
 

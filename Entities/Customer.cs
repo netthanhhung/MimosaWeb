@@ -31,7 +31,9 @@ namespace Entities
         public System.DateTime DateUpdated { get; set; }
         public string CreatedBy { get; set; }
         public string UpdatedBy { get; set; }
+        public int OrganisationID { get; set; }
     
         public virtual ICollection<Booking> Bookings { get; set; }
+        public virtual Organisation Organisation { get; set; }
     }
 }
