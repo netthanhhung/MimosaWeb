@@ -147,6 +147,7 @@
     <Content Include="Content\Images\1911853_10152290965001600_821418289_n.jpg" />
     <Content Include="Content\Images\5249_115887419733_955409_n.jpg" />
     <Content Include="Content\Images\promotions.png" />
+    <Content Include="Content\Images\RubyLogo.png" />
     <Content Include="Content\Styles\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Images\1_9.jpg" />
     <Content Include="Content\Images\bannerAdvertise.jpg" />
@@ -276,7 +277,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Test.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
